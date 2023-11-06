@@ -1,8 +1,10 @@
-def get_let(let: str) -> int:
-    if ord(let) > 1077 and not ord(let) == 1105:
-        print(abs(31 - (ord("я")-ord(let)))+2)
-    elif ord(let) == 1105:
-        print(7)
-    else:
-        print(abs(31 - (ord("я")-ord(let)))+1)
+from class_data import Word
 
+with open("words.txt", "r", encoding="utf-8") as f:
+    words = f.read().split("\n")
+    for i in words:
+        w = Word(i)
+        wl = w.get_word_sum()
+        if wl == 100:
+            print("Виха!")
+            print(f"Слово: {i}, сумма: {wl}")
